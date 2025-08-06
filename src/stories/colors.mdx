@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title='ui/Colors' />
+
+<h2>All Theme Colors</h2>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+    gap: '1rem',
+  }}
+>
+  {[
+    // Pairs: bg + text
+    { name: 'Primary', var: '--color-primary', content: '--color-primary-content' },
+    { name: 'Secondary', var: '--color-secondary', content: '--color-secondary-content' },
+    { name: 'Accent', var: '--color-accent', content: '--color-accent-content' },
+    { name: 'Neutral', var: '--color-neutral', content: '--color-neutral-content' },
+    { name: 'Info', var: '--color-info', content: '--color-info-content' },
+    { name: 'Success', var: '--color-success', content: '--color-success-content' },
+    { name: 'Warning', var: '--color-warning', content: '--color-warning-content' },
+    { name: 'Error', var: '--color-error', content: '--color-error-content' },
+
+    // Single colors (no content counterpart)
+    { name: 'Base Content', var: '--color-base-content', isTextOnly: true },
+    { name: 'Root BG', var: '--root-bg' },
+
+].map(({ name, var: bgVar, content, isTextOnly }) => (
+<div
+key={name}
+style={{
+        backgroundColor: isTextOnly ? 'transparent' : `var(${bgVar})`,
+        color: isTextOnly
+          ? `var(${bgVar})`
+          : content
+            ? `var(${content})`
+            : '#fff',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '80px',
+        borderRadius: '0.5rem',
+        fontWeight: 'bold',
+        border: '1px solid #ddd',
+        textAlign: 'center',
+        padding: '0 0.5rem',
+      }} >
+{name}
+</div>
+))}
+
+</div>
+
